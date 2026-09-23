@@ -40,16 +40,16 @@ export function Booking() {
   }
 
   return (
-    <section id="book" className="border-t border-border/60 px-5 py-24 md:px-10 md:py-32" aria-labelledby="book-title">
-      <div className="grid gap-12 lg:grid-cols-12">
+    <section id="book" className="border-t border-border/60 px-5 py-16 md:px-10 md:py-24" aria-labelledby="book-title">
+      <div className="grid gap-10 lg:grid-cols-12">
         <div className="lg:col-span-5">
-          <Eyebrow index="V">VIP Appointments</Eyebrow>
-          <h2 id="book-title" className="font-serif text-4xl tracking-[-0.04em] md:text-6xl">Book a<br /><em>Private Salon Visit.</em></h2>
-          <p className="mt-6 max-w-sm text-sm leading-relaxed text-muted-foreground">
-            Schedule a private one-on-one consultation with Abdul Rahman at our Karachi, Lahore, or Islamabad salons to examine jewelry, customize bridal sets, or commission bespoke pieces.
+          <Eyebrow index="V">Appointments</Eyebrow>
+          <h2 id="book-title" className="font-serif text-3xl sm:text-5xl md:text-6xl tracking-[-0.04em]">Private<br /><em>Consultation.</em></h2>
+          <p className="mt-4 max-w-sm text-xs sm:text-sm leading-relaxed text-muted-foreground">
+            Schedule a private appointment in Karachi or Lahore for custom bridal sets and bespoke jewelry viewings.
           </p>
-          <div className="mt-6 font-mono text-xs text-muted-foreground">
-            Direct Concierge: <a href="mailto:arehman2370@gmail.com" className="text-primary hover:underline">arehman2370@gmail.com</a>
+          <div className="mt-4 font-mono text-xs text-muted-foreground">
+            Concierge: <a href="mailto:arehman2370@gmail.com" className="text-primary hover:underline">arehman2370@gmail.com</a>
           </div>
         </div>
 

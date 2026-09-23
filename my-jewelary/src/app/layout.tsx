@@ -1,7 +1,16 @@
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { TooltipProvider } from "@/components/ui/tooltip"
 import { Toaster } from "@/components/ui/sonner"
 import "./globals.css"
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+  viewportFit: "cover",
+  themeColor: "#09090b",
+}
 
 export const metadata: Metadata = {
   title: "Abdul Rahman Jewelry — Pakistan's Premier Fine Jeweler",

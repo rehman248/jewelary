@@ -22,12 +22,14 @@ export function SlideIn({ from, children, className }: { from: 'left' | 'right';
   const ref = useRef<HTMLDivElement>(null)
   const reduce = useReducedMotion()
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start 95%', 'start 60%'] })
-  const x = useTransform(scrollYProgress, [0, 1], [from === 'left' ? -80 : 80, 0])
+  const x = useTransform(scrollYProgress, [0, 1], [from === 'left' ? -20 : 20, 0])
   const opacity = useTransform(scrollYProgress, [0, 1], [0, 1])
   return (
-    <motion.div ref={ref} style={reduce ? undefined : { x, opacity }} className={className}>
-      {children}
-    </motion.div>
+    <div className="overflow-hidden w-full max-w-full">
+      <motion.div ref={ref} style={reduce ? undefined : { x, opacity }} className={className}>
+        {children}
+      </motion.div>
+    </div>
   )
 }
 

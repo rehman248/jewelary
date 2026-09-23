@@ -23,19 +23,19 @@ const STRIP = 'PAKISTAN’S PREMIER HAUTE JOAILLERIE · KARACHI · LAHORE · ISL
 
 export function Cities() {
   return (
-    <section id="cities" className="border-t border-border/60 py-24 md:py-32" aria-labelledby="cities-title">
-      <div className="overflow-hidden border-y border-border/60 py-4 [mask-image:linear-gradient(90deg,transparent,black_8%,black_92%,transparent)]" aria-hidden="true">
+    <section id="cities" className="border-t border-border/60 py-16 md:py-24" aria-labelledby="cities-title">
+      <div className="overflow-hidden border-y border-border/60 py-3.5 [mask-image:linear-gradient(90deg,transparent,black_8%,black_92%,transparent)]" aria-hidden="true">
         <div className="animate-marquee flex w-max whitespace-nowrap font-mono text-xs uppercase tracking-[0.3em] text-foreground/70">
           <span className="pr-0">{STRIP.repeat(3)}</span>
           <span className="pr-0">{STRIP.repeat(3)}</span>
         </div>
       </div>
 
-      <div className="px-5 pt-20 md:px-10">
-        <Eyebrow index="IV">Our Flagship Salons</Eyebrow>
-        <h2 id="cities-title" className="font-serif text-4xl tracking-[-0.04em] md:text-6xl">Karachi & Lahore</h2>
-        <p className="mt-4 max-w-lg text-sm text-muted-foreground">
-          Experience our handcrafted Pakistani jewelry in person. Private viewings available across Pakistan.
+      <div className="px-5 pt-14 md:px-10">
+        <Eyebrow index="IV">Flagship Salons</Eyebrow>
+        <h2 id="cities-title" className="font-serif text-3xl sm:text-5xl md:text-6xl tracking-[-0.04em]">Karachi & Lahore</h2>
+        <p className="mt-3 max-w-md text-xs sm:text-sm text-muted-foreground">
+          Private viewing appointments available in Pakistan.
         </p>
 
         <div className="mt-14 grid gap-12 md:grid-cols-2 md:gap-10">

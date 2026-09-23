@@ -3,17 +3,17 @@
 import { Eyebrow, SlideIn } from './motion'
 
 const STEPS = [
-  { n: '01', title: 'Design', copy: 'Every piece starts with a sketch. We plan the shape, size, and style before any work begins.' },
-  { n: '02', title: 'Select Materials', copy: 'We pick the best stones and metals by hand. Only top quality materials make it into our jewelry.' },
-  { n: '03', title: 'Craft', copy: 'Skilled workers shape each piece with care. Every detail is checked to make sure it looks perfect.' },
-  { n: '04', title: 'Finish', copy: 'The final polish and setting. Your jewelry is ready to wear and built to last a lifetime.' },
+  { n: '01', title: 'Design', copy: 'Hand-sketched in our Karachi & Lahore ateliers.' },
+  { n: '02', title: 'Materials', copy: 'Ethically sourced GIA diamonds & 18K/22K solid gold.' },
+  { n: '03', title: 'Setting', copy: 'Precision micro-pavé and master prong settings.' },
+  { n: '04', title: 'Finish', copy: 'Mirror polish and official purity hallmarking.' },
 ]
 
 export function Making() {
   return (
-    <section id="making" className="border-t border-border/60 px-5 py-24 md:px-10 md:py-32" aria-labelledby="making-title">
-      <Eyebrow index="II">How We Make It</Eyebrow>
-      <h2 id="making-title" className="max-w-3xl font-serif text-4xl tracking-[-0.04em] md:text-6xl">Four Simple Steps</h2>
+    <section id="making" className="border-t border-border/60 px-5 py-16 md:px-10 md:py-24" aria-labelledby="making-title">
+      <Eyebrow index="II">Craftsmanship</Eyebrow>
+      <h2 id="making-title" className="max-w-3xl font-serif text-3xl sm:text-5xl md:text-6xl tracking-[-0.04em]">Artisan Creation</h2>
 
       <div className="mt-16 grid gap-16 lg:grid-cols-12 lg:gap-10">
         <ol className="space-y-14 lg:col-span-6">

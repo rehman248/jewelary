@@ -34,7 +34,7 @@ interface NavItemDef {
 
 const NAV_ITEMS: NavItemDef[] = [
   { href: '/app', icon: <LayoutDashboard className="h-4 w-4" />, label: 'Dashboard Overview', active: true },
-  { href: '/#collection', icon: <Gem className="h-4 w-4" />, label: 'Jewelry Collection' },
+  { href: '/products', icon: <Gem className="h-4 w-4" />, label: 'Jewelry Products' },
   { href: '/payment', icon: <CreditCard className="h-4 w-4" />, label: 'Checkout & Payment' },
   { href: '/#book', icon: <Calendar className="h-4 w-4" />, label: 'Private Appointment' },
 ]

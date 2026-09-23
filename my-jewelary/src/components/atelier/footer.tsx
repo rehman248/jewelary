@@ -1,26 +1,28 @@
 import Link from 'next/link'
 
 const LINKS = [
-  { href: '#collection', label: 'All Jewelry Collection' },
-  { href: '#making', label: 'Artisan Craftsmanship' },
-  { href: '#specification', label: 'Gold & Diamond Purity' },
-  { href: '#cities', label: 'Karachi & Lahore Salons' },
-  { href: '#book', label: 'Book VIP Appointment' },
+  { href: '/products', label: 'Jewelry Catalog' },
+  { href: '/#making', label: 'Craftsmanship' },
+  { href: '/#specification', label: 'Purity Standards' },
+  { href: '/#cities', label: 'Flagship Salons' },
+  { href: '/#book', label: 'Book Appointment' },
 ]
 
 export function Footer() {
   return (
-    <footer className="border-t border-border px-5 py-14 md:px-10">
-      <div className="grid gap-10 md:grid-cols-12 md:items-start">
+    <footer className="border-t border-border px-5 py-10 md:px-10">
+      <div className="grid gap-8 md:grid-cols-12 md:items-start">
         <div className="md:col-span-4">
-          <a href="#top" className="font-serif text-2xl tracking-[0.2em] font-medium">ABDUL RAHMAN</a>
-          <p className="mt-3 max-w-xs text-xs leading-relaxed text-muted-foreground">
-            Pakistan’s premier fine jewelry house. Masterfully handcrafted 18K/22K gold and certified diamond creations by Abdul Rahman.
+          <Link href="/" className="font-serif text-2xl tracking-[0.2em] font-medium">ABDUL RAHMAN</Link>
+          <p className="mt-2 max-w-xs text-xs leading-relaxed text-muted-foreground">
+            Handcrafted 18K/22K solid gold and certified diamond creations by Abdul Rahman.
           </p>
         </div>
-        <nav aria-label="Footer" className="flex flex-col gap-3 font-mono text-[11px] uppercase tracking-[0.22em] md:col-span-4">
+        <nav aria-label="Footer" className="flex flex-col gap-2.5 font-mono text-[11px] uppercase tracking-[0.2em] md:col-span-4">
           {LINKS.map((l) => (
-            <a key={l.href} href={l.href} className="text-foreground/70 transition-colors hover:text-primary">{l.label}</a>
+            <Link key={l.href} href={l.href} className="text-foreground/70 transition-colors hover:text-primary">
+              {l.label}
+            </Link>
           ))}
         </nav>
         <div className="flex flex-col gap-3 font-mono text-[11px] uppercase tracking-[0.22em] md:col-span-4">

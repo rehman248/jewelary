@@ -286,6 +286,23 @@ export function Collection({ onAdd }: { onAdd: (product: Product) => void }) {
         ))}
       </div>
 
+      {/* Explore Full Catalog Link */}
+      <div className="mt-12 flex flex-col items-center justify-center rounded-2xl border border-border/80 bg-card/60 p-8 text-center space-y-3">
+        <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-primary">Masterpiece Gallery</span>
+        <h3 className="font-serif text-2xl md:text-3xl">Looking for our complete jewelry collection?</h3>
+        <p className="max-w-md text-xs md:text-sm text-muted-foreground">
+          Discover our full range of certified diamond rings, royal Swat emeralds, solid gold chains, and platinum timepieces on our dedicated catalog.
+        </p>
+        <div className="pt-2">
+          <Link
+            href="/products"
+            className="inline-flex items-center gap-2 rounded-lg bg-primary px-7 py-3.5 font-mono text-xs uppercase tracking-wider text-primary-foreground font-semibold shadow-lg hover:opacity-90 transition active:scale-[0.98]"
+          >
+            Explore Full Products Page ({PRODUCTS.length} Creations) →
+          </Link>
+        </div>
+      </div>
+
       {/* Quick View & Full Details Modal */}
       {selectedProduct && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-background/80 p-4 backdrop-blur-md animate-in fade-in duration-200">

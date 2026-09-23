@@ -80,10 +80,10 @@ export default function DashboardHome() {
 
         <div className="flex flex-wrap items-center gap-3">
           <Link
-            href="/#collection"
+            href="/products"
             className="inline-flex h-10 items-center gap-2 rounded border border-border bg-card px-4 font-mono text-xs uppercase tracking-wider text-foreground hover:border-primary transition-colors"
           >
-            <Gem className="h-3.5 w-3.5 text-primary" /> Browse Collection
+            <Gem className="h-3.5 w-3.5 text-primary" /> Browse Catalog
           </Link>
           <Link
             href="/payment"
