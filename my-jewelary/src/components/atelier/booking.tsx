@@ -1,0 +1,105 @@
+'use client'
+
+import { useState, type FormEvent } from 'react'
+import { toast } from 'sonner'
+import { blink } from '@/blink/client'
+import type { ViewingEnquiriesRow } from '@/lib/db-types'
+import { Eyebrow } from './motion'
+
+const field =
+  'w-full border-0 border-b border-border bg-transparent py-3 font-sans text-base text-foreground placeholder:text-muted-foreground/60 focus:border-primary focus:outline-none'
+const label = 'font-mono text-[10px] uppercase tracking-[0.24em] text-primary'
+
+export function Booking() {
+  const [status, setStatus] = useState<'idle' | 'sending' | 'sent'>('idle')
+
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    const form = e.currentTarget
+    const data = new FormData(form)
+    setStatus('sending')
+    try {
+      const requests = blink.db.table<ViewingEnquiriesRow>('viewing_enquiries')
+      await requests.create({
+        id: `vr_${Date.now().toString(36)}${Math.random().toString(36).slice(2, 7)}`,
+        name: String(data.get('name')),
+        email: String(data.get('email')),
+        city: String(data.get('city')),
+        preferredDate: String(data.get('date')),
+        message: String(data.get('message') ?? ''),
+      })
+      setStatus('sent')
+      form.reset()
+      toast.success('Appointment request sent!', {
+        description: 'Abdul Rahman Atelier team will contact you via email or phone within 24 hours.',
+      })
+    } catch (err) {
+      setStatus('idle')
+      toast.error('Could not send your request', { description: err instanceof Error ? err.message : String(err) })
+    }
+  }
+
+  return (
+    <section id="book" className="border-t border-border/60 px-5 py-24 md:px-10 md:py-32" aria-labelledby="book-title">
+      <div className="grid gap-12 lg:grid-cols-12">
+        <div className="lg:col-span-5">
+          <Eyebrow index="V">VIP Appointments</Eyebrow>
+          <h2 id="book-title" className="font-serif text-4xl tracking-[-0.04em] md:text-6xl">Book a<br /><em>Private Salon Visit.</em></h2>
+          <p className="mt-6 max-w-sm text-sm leading-relaxed text-muted-foreground">
+            Schedule a private one-on-one consultation with Abdul Rahman at our Karachi, Lahore, or Islamabad salons to examine jewelry, customize bridal sets, or commission bespoke pieces.
+          </p>
+          <div className="mt-6 font-mono text-xs text-muted-foreground">
+            Direct Concierge: <a href="mailto:arehman2370@gmail.com" className="text-primary hover:underline">arehman2370@gmail.com</a>
+          </div>
+        </div>
+
+        {status === 'sent' ? (
+          <div className="flex flex-col justify-center border-t border-border pt-8 lg:col-span-7">
+            <p className="font-mono text-xs uppercase tracking-[0.28em] text-primary">Request Confirmed</p>
+            <p className="mt-4 max-w-md font-serif text-3xl tracking-[-0.03em]">Thank you! We received your request and will contact you shortly.</p>
+            <button type="button" onClick={() => setStatus('idle')} className="mt-8 self-start border-b border-primary pb-1 text-xs uppercase tracking-[0.2em] hover:text-primary">
+              Book another appointment
+            </button>
+          </div>
+        ) : (
+          <form onSubmit={onSubmit} className="grid gap-8 lg:col-span-7 md:grid-cols-2">
+            <div>
+              <label htmlFor="bk-name" className={label}>Your Full Name</label>
+              <input id="bk-name" name="name" required autoComplete="name" className={field} placeholder="Abdul Rahman" />
+            </div>
+            <div>
+              <label htmlFor="bk-email" className={label}>Email Address</label>
+              <input id="bk-email" name="email" type="email" required autoComplete="email" className={field} placeholder="arehman2370@gmail.com" />
+            </div>
+            <div>
+              <label htmlFor="bk-city" className={label}>Select City / Salon</label>
+              <select id="bk-city" name="city" required defaultValue="Karachi Flagship (Clifton)" className={`${field} appearance-none`}>
+                <option value="Karachi Flagship (Clifton)">Karachi Flagship (Clifton)</option>
+                <option value="Lahore Salon (MM Alam Road)">Lahore Salon (MM Alam Road)</option>
+                <option value="Islamabad Studio (F-7)">Islamabad Studio (F-7)</option>
+                <option value="Virtual Consultation (Nationwide / International)">Virtual Consultation (Online)</option>
+              </select>
+            </div>
+            <div>
+              <label htmlFor="bk-date" className={label}>Preferred Date</label>
+              <input id="bk-date" name="date" type="date" required className={`${field} [color-scheme:dark]`} />
+            </div>
+            <div className="md:col-span-2">
+              <label htmlFor="bk-message" className={label}>Special Requests / Bridal Customization Notes (Optional)</label>
+              <textarea id="bk-message" name="message" rows={3} className={`${field} resize-none`} placeholder="Tell us which jewelry piece, gold carat, or gemstone you wish to view..." />
+            </div>
+            <div className="md:col-span-2">
+              <button
+                type="submit"
+                disabled={status === 'sending'}
+                className="inline-flex h-12 cursor-pointer items-center gap-3 bg-primary px-8 font-mono text-xs uppercase tracking-[0.22em] text-primary-foreground transition-transform duration-200 hover:scale-[1.02] active:scale-[0.98] disabled:opacity-60"
+              >
+                {status === 'sending' ? 'Sending Request…' : 'Request Private Appointment'}
+              </button>
+            </div>
+          </form>
+        )}
+      </div>
+    </section>
+  )
+}
