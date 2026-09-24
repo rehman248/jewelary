@@ -4,29 +4,39 @@
 @custom-variant dark (&:is(.dark *));
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   Design Tokens - Abdul Rahman Fine Jewelry Visual Identity
+   Design Tokens - Valoire Haute Joaillerie Visual Identity
    ═══════════════════════════════════════════════════════════════════════════ */
 
 :root {
-  --background: #09090B;
-  --foreground: #FFFFFF;
-  --card: #121215;
+  --background: #08080a;
+  --foreground: #F8FAFC;
+  --card: #14151b;
   --card-foreground: #FFFFFF;
-  --popover: #17171C;
+  --popover: #181922;
   --popover-foreground: #FFFFFF;
-  --primary: #FFFFFF;
-  --primary-foreground: #09090B;
-  --secondary: #18181D;
+  --primary: #F8FAFC;
+  --primary-foreground: #08080a;
+  --gold: #D4AF37;
+  --gold-muted: rgba(212, 175, 55, 0.15);
+  --secondary: #191a24;
   --secondary-foreground: #E2E8F0;
-  --muted: #15151A;
+  --muted: #161720;
   --muted-foreground: #94A3B8;
   --accent: #E2E8F0;
-  --accent-foreground: #09090B;
+  --accent-foreground: #08080a;
   --destructive: #EF4444;
   --destructive-foreground: #FFFFFF;
-  --border: #222228;
-  --input: #222228;
-  --ring: #FFFFFF;
+  --border: #23242e;
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --input: #23242e;
+  --ring: #F8FAFC;
+
+  /* Black Shades for Section Alternation */
+  --bg-shade-base: #08080a;
+  --bg-shade-alt: #0e0f14;
+  --bg-shade-surface: #14151c;
+  --bg-shade-elevated: #1a1b24;
+
   --chart-1: #FFFFFF;
   --chart-2: #E2E8F0;
   --chart-3: #CBD5E1;
@@ -35,7 +45,7 @@
   --sidebar: #0B0B0E;
   --sidebar-foreground: #94A3B8;
   --sidebar-primary: #FFFFFF;
-  --sidebar-primary-foreground: #09090B;
+  --sidebar-primary-foreground: #08080a;
   --sidebar-accent: #16161B;
   --sidebar-accent-foreground: #FFFFFF;
   --sidebar-border: #1D1D23;
@@ -132,7 +142,9 @@
 }
 
 @layer base {
-  * { border-color: var(--color-border); }
+  * {
+    border-color: var(--color-border);
+  }
 
   html {
     height: 100%;
@@ -142,6 +154,7 @@
     -webkit-text-size-adjust: 100%;
     scroll-behavior: smooth;
   }
+
   body {
     min-height: 100%;
     min-height: 100dvh;
@@ -158,21 +171,45 @@
 }
 
 @layer utilities {
-  .animate-fade-in { animation: fade-in 0.3s ease-in-out; }
-  @keyframes fade-in {
-    from { opacity: 0; transform: translateY(10px); }
-    to   { opacity: 1; transform: translateY(0); }
+  .animate-fade-in {
+    animation: fade-in 0.3s ease-in-out;
   }
-  .animate-marquee { animation: marquee 40s linear infinite; }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-marquee {
+    animation: marquee 40s linear infinite;
+  }
+
   @keyframes marquee {
-    from { transform: translateX(0); }
-    to   { transform: translateX(-50%); }
+    from {
+      transform: translateX(0);
+    }
+
+    to {
+      transform: translateX(-50%);
+    }
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .animate-marquee { animation: none; }
-  *, *::before, *::after {
+  .animate-marquee {
+    animation: none;
+  }
+
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;

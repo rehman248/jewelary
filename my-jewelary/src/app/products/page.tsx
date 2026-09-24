@@ -7,6 +7,7 @@ import {
   ArrowLeft, 
   Eye, 
   Filter, 
+  MessageCircle,
   Plus, 
   Search, 
   ShoppingBag, 
@@ -19,6 +20,7 @@ import { toast } from 'sonner'
 import { PRODUCTS, type Product } from '@/components/atelier/collection'
 import { CheckoutDrawer } from '@/components/atelier/CheckoutDrawer'
 import { Footer } from '@/components/atelier/footer'
+import { Navbar } from '@/components/atelier/navbar'
 
 export default function ProductsPage() {
   const [selectedCategory, setSelectedCategory] = useState<string>('all')
@@ -75,70 +77,27 @@ export default function ProductsPage() {
   }
 
   return (
-    <div className="min-h-dvh flex flex-col bg-background text-foreground selection:bg-primary selection:text-primary-foreground">
-      {/* Top Luxury Navigation */}
-      <header className="sticky top-0 z-40 border-b border-border/80 bg-background/90 backdrop-blur-md">
-        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center gap-4">
-            <Link
-              href="/"
-              className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-card/60 px-3 py-1.5 font-mono text-[11px] uppercase tracking-wider text-muted-foreground hover:border-primary hover:text-foreground transition-colors"
-            >
-              <ArrowLeft className="h-3.5 w-3.5" /> Back to Home
-            </Link>
-          </div>
-
-          {/* Logo */}
-          <Link href="/" className="flex flex-col items-center text-center">
-            <span className="font-serif text-lg sm:text-xl tracking-[0.25em] font-medium text-foreground">
-              ABDUL RAHMAN
-            </span>
-            <span className="font-mono text-[8px] tracking-[0.3em] uppercase text-muted-foreground">
-              Haute Joaillerie · Pakistan
-            </span>
-          </Link>
-
-          {/* Right Navigation */}
-          <div className="flex items-center gap-2.5 sm:gap-4">
-            <Link
-              href="/app"
-              className="hidden font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground hover:text-foreground sm:inline transition-colors"
-            >
-              Client Area
-            </Link>
-            <button
-              type="button"
-              onClick={() => setCheckoutOpen(true)}
-              className="relative flex cursor-pointer items-center gap-2 rounded-full border border-border bg-card px-3.5 py-1.5 font-mono text-xs uppercase tracking-wider text-foreground hover:border-primary transition-colors"
-              aria-label={`Open shopping bag, ${cart.length} items`}
-            >
-              <ShoppingBag className="h-4 w-4 text-primary" />
-              <span className="hidden sm:inline">Bag</span>
-              <span className="flex h-5 min-w-5 items-center justify-center rounded-full bg-primary px-1 text-[10px] font-bold text-primary-foreground">
-                {cart.length}
-              </span>
-            </button>
-          </div>
-        </div>
-      </header>
+    <div className="min-h-dvh flex flex-col bg-[#08080a] text-foreground selection:bg-white selection:text-black">
+      {/* Universal Top Section Navigation */}
+      <Navbar cartCount={cart.length} onOpenBag={() => setCheckoutOpen(true)} />
 
       {/* Main Content Area */}
       <main className="flex-1">
-        {/* Hero Section */}
-        <section className="border-b border-border/50 bg-gradient-to-b from-card/30 to-background px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+        {/* Catalog Banner */}
+        <section className="border-b border-white/[0.06] bg-[#0e0f15] px-4 py-10 sm:px-6 sm:py-14 lg:px-8">
           <div className="mx-auto max-w-7xl">
-            <div className="max-w-2xl space-y-2">
-              <div className="flex items-center gap-2">
-                <span className="h-px w-6 bg-primary" />
-                <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-primary">
-                  Catalog
+            <div className="max-w-2xl space-y-3">
+              <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1">
+                <Sparkles className="h-3 w-3 text-white" />
+                <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+                  Master Creations Catalog
                 </span>
               </div>
-              <h1 className="font-serif text-3xl sm:text-5xl tracking-[-0.03em] text-foreground">
+              <h1 className="font-serif text-3xl sm:text-5xl tracking-[-0.03em] text-white">
                 Jewelry & Timepieces
               </h1>
               <p className="text-xs sm:text-sm text-muted-foreground">
-                Certified natural diamonds and hallmarked 18K/22K solid gold.
+                Handcrafted solid gold, certified GIA/IGI diamonds, and royal Pakistani Swat emeralds.
               </p>
             </div>
 
@@ -152,13 +111,13 @@ export default function ProductsPage() {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder="Search rings, emeralds, diamonds, watches..."
-                  className="h-11 w-full rounded-xl border border-border bg-card pl-10 pr-4 text-xs sm:text-sm text-foreground placeholder:text-muted-foreground/70 outline-none focus:border-primary transition-colors"
+                  className="h-11 w-full rounded-xl border border-white/10 bg-[#161722] pl-10 pr-4 text-xs sm:text-sm text-foreground placeholder:text-muted-foreground/50 outline-none focus:border-white/30 transition-colors"
                 />
                 {searchQuery && (
                   <button
                     type="button"
                     onClick={() => setSearchQuery('')}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-white cursor-pointer"
                   >
                     <X className="h-4 w-4" />
                   </button>
@@ -172,7 +131,7 @@ export default function ProductsPage() {
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value as any)}
-                  className="h-11 rounded-xl border border-border bg-card px-3 font-mono text-xs text-foreground outline-none focus:border-primary"
+                  className="h-11 rounded-xl border border-white/10 bg-[#161722] px-3 font-mono text-xs text-foreground outline-none focus:border-white/30"
                 >
                   <option value="featured">Featured Masterpieces</option>
                   <option value="price-asc">Price: Low to High</option>
@@ -191,10 +150,10 @@ export default function ProductsPage() {
                     key={cat.id}
                     type="button"
                     onClick={() => setSelectedCategory(cat.id)}
-                    className={`cursor-pointer whitespace-nowrap rounded-lg px-4 py-2 font-mono text-xs uppercase tracking-wider transition ${
+                    className={`cursor-pointer whitespace-nowrap rounded-xl px-4 py-2 font-mono text-xs uppercase tracking-wider transition ${
                       isActive
-                        ? 'bg-primary text-primary-foreground font-semibold shadow-md'
-                        : 'border border-border bg-card/60 text-muted-foreground hover:border-primary/60 hover:text-foreground'
+                        ? 'bg-white text-black font-semibold shadow-md'
+                        : 'border border-white/10 bg-[#161722] text-muted-foreground hover:border-white/20 hover:text-foreground'
                     }`}
                   >
                     {cat.label}
@@ -233,14 +192,14 @@ export default function ProductsPage() {
               </div>
 
               {/* Grid: 1 col on mobile, 2 on tablet, 3 on desktop, 4 on wide screen */}
-              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                 {filteredProducts.map((product) => (
                   <div
                     key={product.id}
-                    className="group flex flex-col justify-between overflow-hidden rounded-xl border border-border/70 bg-card transition-all duration-300 hover:border-primary/60 hover:shadow-xl"
+                    className="group flex flex-col justify-between overflow-hidden rounded-2xl border border-white/[0.08] bg-[#14151e] transition-all duration-300 hover:border-white/25 hover:shadow-2xl"
                   >
                     {/* Image Area */}
-                    <div className="relative aspect-square w-full overflow-hidden bg-muted/20">
+                    <div className="relative aspect-square w-full overflow-hidden bg-black/40">
                       <img
                         src={product.img}
                         alt={product.name}
@@ -249,7 +208,7 @@ export default function ProductsPage() {
                       />
                       
                       {/* Category Tag */}
-                      <span className="absolute top-3 left-3 rounded bg-background/85 px-2.5 py-1 font-mono text-[9px] uppercase tracking-wider text-foreground/90 backdrop-blur-md border border-border/50">
+                      <span className="absolute top-3 left-3 rounded-lg bg-black/70 px-2.5 py-1 font-mono text-[9px] uppercase tracking-wider text-white/90 backdrop-blur-md border border-white/10">
                         {product.category}'s {product.type}
                       </span>
 
@@ -257,7 +216,7 @@ export default function ProductsPage() {
                       <button
                         type="button"
                         onClick={() => setSelectedProduct(product)}
-                        className="absolute top-3 right-3 flex h-8 w-8 items-center justify-center rounded-full bg-background/85 text-foreground/80 opacity-0 transition-all duration-200 group-hover:opacity-100 hover:bg-primary hover:text-primary-foreground backdrop-blur-md shadow"
+                        className="absolute top-3 right-3 flex h-8 w-8 items-center justify-center rounded-full bg-black/70 text-white/80 opacity-0 transition-all duration-200 group-hover:opacity-100 hover:bg-white hover:text-black backdrop-blur-md shadow cursor-pointer"
                         aria-label={`Quick view ${product.name}`}
                       >
                         <Eye className="h-4 w-4" />
@@ -268,10 +227,10 @@ export default function ProductsPage() {
                     <div className="flex flex-1 flex-col justify-between p-5 space-y-4">
                       <div>
                         <div className="flex flex-col gap-1">
-                          <h3 className="font-serif text-lg sm:text-xl font-normal tracking-tight text-foreground group-hover:text-primary transition-colors">
+                          <h3 className="font-serif text-lg font-medium tracking-tight text-foreground group-hover:text-white transition-colors">
                             {product.name}
                           </h3>
-                          <span className="font-mono text-sm font-semibold text-primary">
+                          <span className="font-mono text-sm font-semibold text-white">
                             {product.price}
                           </span>
                         </div>
@@ -281,18 +240,18 @@ export default function ProductsPage() {
                       </div>
 
                       {/* Action Buttons */}
-                      <div className="flex gap-2 pt-2 border-t border-border/50">
+                      <div className="flex gap-2 pt-3 border-t border-white/[0.06]">
                         <button
                           type="button"
                           onClick={() => handleAddToCart(product)}
-                          className="flex-1 flex items-center justify-center gap-1.5 rounded-lg bg-primary py-2.5 font-mono text-[10px] uppercase tracking-wider text-primary-foreground font-medium transition hover:opacity-90 active:scale-[0.98]"
+                          className="flex-1 flex items-center justify-center gap-1.5 rounded-xl bg-white py-2.5 font-mono text-[10px] uppercase tracking-wider text-black font-semibold transition hover:bg-white/90 active:scale-[0.98] cursor-pointer"
                         >
                           <Plus className="h-3.5 w-3.5" /> Add to Bag
                         </button>
                         <button
                           type="button"
                           onClick={() => setSelectedProduct(product)}
-                          className="rounded-lg border border-border px-3.5 py-2.5 font-mono text-[10px] uppercase tracking-wider text-muted-foreground transition hover:border-primary hover:text-foreground"
+                          className="rounded-xl border border-white/15 bg-white/[0.04] px-3.5 py-2.5 font-mono text-[10px] uppercase tracking-wider text-muted-foreground transition hover:border-white/30 hover:text-white cursor-pointer"
                         >
                           Specs
                         </button>
@@ -312,7 +271,7 @@ export default function ProductsPage() {
           <button
             type="button"
             onClick={() => setCheckoutOpen(true)}
-            className="w-full flex items-center justify-between rounded-xl bg-primary px-5 py-3.5 font-mono text-xs uppercase tracking-wider text-primary-foreground shadow-2xl active:scale-[0.99]"
+            className="w-full flex items-center justify-between rounded-xl bg-white px-5 py-3.5 font-mono text-xs uppercase tracking-wider text-black font-semibold shadow-2xl active:scale-[0.99]"
           >
             <span className="flex items-center gap-2">
               <ShoppingBag className="h-4 w-4" /> View Bag ({cart.length} items)

@@ -19,7 +19,7 @@ export function CheckoutDrawer({
   const total = cart.reduce((sum, item) => sum + (item.priceNumber || 0), 0)
   const [paid, setPaid] = useState(false)
   const [reviewing, setReviewing] = useState(false)
-  const [clientName, setClientName] = useState('Abdul Rahman')
+  const [clientName, setClientName] = useState('')
   const [clientEmail, setClientEmail] = useState('arehman2370@gmail.com')
   const [deliveryCity, setDeliveryCity] = useState('Karachi')
   const [paymentMethod, setPaymentMethod] = useState('bank')
@@ -62,7 +62,7 @@ export function CheckoutDrawer({
             <p className="font-mono text-xs uppercase tracking-[0.25em] text-primary">Reservation Confirmed</p>
             <h3 className="font-serif text-3xl md:text-4xl">Shukriya / Thank you.</h3>
             <p className="max-w-sm text-xs md:text-sm leading-relaxed text-muted-foreground">
-              Your order has been recorded. Abdul Rahman Atelier concierge will contact you at <strong>{clientEmail}</strong> with dispatch tracking and gold certification cards.
+              Your order has been recorded. Valoire Atelier concierge will contact you at <strong>{clientEmail}</strong> with dispatch tracking and gold certification cards.
             </p>
             <div className="pt-4 flex gap-4">
               <button
@@ -177,7 +177,7 @@ export function CheckoutDrawer({
                           value={clientName}
                           onChange={e => setClientName(e.target.value)}
                           className="mt-1 h-9 w-full rounded border border-border bg-background px-3 text-xs outline-none focus:border-primary"
-                          placeholder="Abdul Rahman"
+                          placeholder="e.g. Sarah Khan"
                         />
                       </label>
                       <label className="block text-xs">

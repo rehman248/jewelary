@@ -36,7 +36,7 @@ export const PRODUCTS: Product[] = [
     price: 'PKR 850,000',
     priceNumber: 850000,
     img: '/media/stone-1.jpg',
-    description: 'An exquisite round brilliant diamond mounted on a hand-carved 18K rose gold band, crafted in Pakistan by Abdul Rahman.',
+    description: 'An exquisite round brilliant diamond mounted on a hand-carved 18K rose gold band, crafted in Pakistan by Valoire Atelier.',
     specs: {
       stone: '2.10 Carat Round Brilliant Cut Diamond',
       metal: '18K Solid Rose Gold (750 Hallmark)',
@@ -127,7 +127,7 @@ export const PRODUCTS: Product[] = [
       stone: 'Natural Black Onyx & 0.65 ct Round Diamonds',
       metal: '22K Heavy Solid Gold (18.4g)',
       clarity: 'Mirror-polished Onyx · VS Diamonds',
-      certificate: 'Abdul Rahman Master Hallmark',
+      certificate: 'Valoire Master Hallmark',
     },
   },
   {
@@ -180,125 +180,131 @@ export function Collection({ onAdd }: { onAdd: (product: Product) => void }) {
   }
 
   return (
-    <section id="collection" className="px-5 py-24 md:px-10 md:py-32" aria-labelledby="collection-title">
-      {/* Header */}
-      <div className="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-        <div>
-          <Eyebrow index="I">Signature Collection</Eyebrow>
-          <h2 id="collection-title" className="font-serif text-4xl tracking-[-0.04em] md:text-6xl">
-            Fine Jewelry<br /><em>for Men & Women.</em>
-          </h2>
+    <section id="collection" className="relative bg-[#0e0f15] border-t border-white/[0.06] px-5 py-20 sm:py-28 md:px-10" aria-labelledby="collection-title">
+      <div className="mx-auto max-w-7xl">
+        {/* Header */}
+        <div className="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <div className="max-w-2xl space-y-3">
+            <Eyebrow index="I">Signature Highlights</Eyebrow>
+            <h2 id="collection-title" className="font-serif text-3xl sm:text-5xl md:text-6xl tracking-[-0.03em] text-foreground">
+              Master Creations
+            </h2>
+            <p className="text-sm sm:text-base leading-relaxed text-muted-foreground">
+              Handcrafted in Pakistan by Valoire Atelier. Featuring certified natural gemstones, 18K/22K solid gold, and official assay hallmarking.
+            </p>
+          </div>
+
+          <Link
+            href="/products"
+            className="inline-flex items-center gap-2 rounded-xl bg-white px-5 py-3 font-mono text-xs uppercase tracking-wider text-black font-semibold hover:bg-white/90 transition shadow-lg self-start md:self-auto"
+          >
+            Full Catalog ({PRODUCTS.length}) →
+          </Link>
         </div>
-        <p className="max-w-md text-sm leading-relaxed text-muted-foreground">
-          Handcrafted in Pakistan by Abdul Rahman. Each creation features certified natural gemstones, 18K/22K pure gold, and lifetime authenticity certification.
-        </p>
-      </div>
 
-      {/* Filter Tabs */}
-      <div className="mb-10 flex flex-wrap items-center gap-3 font-mono text-xs uppercase tracking-[0.2em]">
-        {[
-          { id: 'all', label: 'All Pakistani Creations' },
-          { id: 'women', label: "Women's Collection" },
-          { id: 'men', label: "Men's Collection" },
-        ].map((tab) => (
-          <button
-            key={tab.id}
-            type="button"
-            onClick={() => setFilter(tab.id as 'all' | 'women' | 'men')}
-            className={`cursor-pointer rounded border px-5 py-2.5 transition ${
-              filter === tab.id
-                ? 'border-primary bg-primary text-primary-foreground font-medium shadow'
-                : 'border-border text-muted-foreground hover:border-primary/60 hover:text-foreground'
-            }`}
-          >
-            {tab.label}
-          </button>
-        ))}
-      </div>
+        {/* Filter Tabs */}
+        <div className="mb-10 flex flex-wrap items-center gap-2.5 font-mono text-xs uppercase tracking-wider">
+          {[
+            { id: 'all', label: 'All Curated Pieces' },
+            { id: 'women', label: "Women's Masterpieces" },
+            { id: 'men', label: "Men's Masterpieces" },
+          ].map((tab) => (
+            <button
+              key={tab.id}
+              type="button"
+              onClick={() => setFilter(tab.id as 'all' | 'women' | 'men')}
+              className={`cursor-pointer rounded-xl px-4 py-2.5 transition ${
+                filter === tab.id
+                  ? 'bg-white text-black font-semibold shadow-md'
+                  : 'border border-white/10 bg-[#161722] text-muted-foreground hover:border-white/20 hover:text-foreground'
+              }`}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
 
-      {/* Products Grid */}
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        {filtered.map((product) => (
-          <div
-            key={product.id}
-            className="group relative flex flex-col overflow-hidden rounded-xl border border-border/70 bg-card transition-all duration-300 hover:border-primary/60 hover:shadow-xl"
-          >
-            {/* Full Product Image Container */}
-            <div className="relative aspect-square w-full overflow-hidden bg-muted/20">
-              <motion.img
-                src={product.img}
-                alt={product.name}
-                loading="lazy"
-                className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-              />
-              
-              {/* Category Pill */}
-              <span className="absolute top-3 left-3 rounded bg-background/85 px-2.5 py-1 font-mono text-[9px] uppercase tracking-wider text-foreground/90 backdrop-blur-md border border-border/50">
-                {product.category}'s {product.type}
-              </span>
+        {/* Products Grid */}
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {filtered.slice(0, 4).map((product) => (
+            <div
+              key={product.id}
+              className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-white/[0.08] bg-[#14151e] transition-all duration-300 hover:border-white/25 hover:shadow-2xl"
+            >
+              {/* Image Container */}
+              <div className="relative aspect-square w-full overflow-hidden bg-black/40">
+                <motion.img
+                  src={product.img}
+                  alt={product.name}
+                  loading="lazy"
+                  className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                />
+                
+                {/* Category Pill */}
+                <span className="absolute top-3 left-3 rounded-lg bg-black/70 px-2.5 py-1 font-mono text-[9px] uppercase tracking-wider text-white/90 backdrop-blur-md border border-white/10">
+                  {product.category}'s {product.type}
+                </span>
 
-              {/* Quick View Button on Image */}
-              <button
-                type="button"
-                onClick={() => setSelectedProduct(product)}
-                className="absolute top-3 right-3 flex h-8 w-8 items-center justify-center rounded-full bg-background/85 text-foreground/80 opacity-0 transition-all duration-200 group-hover:opacity-100 hover:bg-primary hover:text-primary-foreground backdrop-blur-md shadow"
-                aria-label="Quick view full piece"
-              >
-                <Eye className="h-4 w-4" />
-              </button>
-            </div>
-
-            {/* Product Details */}
-            <div className="flex flex-1 flex-col justify-between p-5 space-y-4">
-              <div>
-                <div className="flex items-baseline justify-between gap-2">
-                  <h3 className="font-serif text-xl tracking-tight text-foreground group-hover:text-primary transition-colors">
-                    {product.name}
-                  </h3>
-                  <span className="font-mono text-sm font-semibold text-primary">
-                    {product.price}
-                  </span>
-                </div>
-                <p className="mt-1.5 text-xs text-muted-foreground line-clamp-2 leading-relaxed">
-                  {product.material}
-                </p>
-              </div>
-
-              {/* Buttons */}
-              <div className="flex gap-2 pt-2 border-t border-border/50">
-                <button
-                  type="button"
-                  onClick={() => handleAddToCart(product)}
-                  className="flex-1 flex items-center justify-center gap-1.5 rounded bg-primary/10 border border-primary/40 py-2.5 font-mono text-[10px] uppercase tracking-wider text-primary transition hover:bg-primary hover:text-primary-foreground active:scale-[0.98]"
-                >
-                  <Plus className="h-3 w-3" /> Add to Bag
-                </button>
+                {/* Quick View Button on Image */}
                 <button
                   type="button"
                   onClick={() => setSelectedProduct(product)}
-                  className="rounded border border-border px-3 py-2.5 font-mono text-[10px] uppercase tracking-wider text-muted-foreground transition hover:border-primary hover:text-foreground"
+                  className="absolute top-3 right-3 flex h-8 w-8 items-center justify-center rounded-full bg-black/70 text-white/80 opacity-0 transition-all duration-200 group-hover:opacity-100 hover:bg-white hover:text-black backdrop-blur-md shadow cursor-pointer"
+                  aria-label="Quick view full piece"
                 >
-                  Details
+                  <Eye className="h-4 w-4" />
                 </button>
               </div>
-            </div>
-          </div>
-        ))}
-      </div>
 
-      {/* Explore Full Catalog Link */}
-      <div className="mt-12 flex flex-col items-center justify-center rounded-2xl border border-border/80 bg-card/60 p-8 text-center space-y-3">
-        <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-primary">Masterpiece Gallery</span>
-        <h3 className="font-serif text-2xl md:text-3xl">Looking for our complete jewelry collection?</h3>
-        <p className="max-w-md text-xs md:text-sm text-muted-foreground">
-          Discover our full range of certified diamond rings, royal Swat emeralds, solid gold chains, and platinum timepieces on our dedicated catalog.
-        </p>
-        <div className="pt-2">
+              {/* Product Details */}
+              <div className="flex flex-1 flex-col justify-between p-5 space-y-4">
+                <div>
+                  <div className="flex flex-col gap-1">
+                    <h3 className="font-serif text-lg font-medium tracking-tight text-foreground group-hover:text-white transition-colors">
+                      {product.name}
+                    </h3>
+                    <span className="font-mono text-sm font-semibold text-white">
+                      {product.price}
+                    </span>
+                  </div>
+                  <p className="mt-2 text-xs text-muted-foreground line-clamp-2 leading-relaxed">
+                    {product.material}
+                  </p>
+                </div>
+
+                {/* Action Buttons */}
+                <div className="flex gap-2 pt-3 border-t border-white/[0.06]">
+                  <button
+                    type="button"
+                    onClick={() => handleAddToCart(product)}
+                    className="flex-1 flex items-center justify-center gap-1.5 rounded-xl bg-white py-2.5 font-mono text-[10px] uppercase tracking-wider text-black font-semibold transition hover:bg-white/90 active:scale-[0.98] cursor-pointer"
+                  >
+                    <Plus className="h-3.5 w-3.5" /> Add to Bag
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => setSelectedProduct(product)}
+                    className="rounded-xl border border-white/15 bg-white/[0.04] px-3.5 py-2.5 font-mono text-[10px] uppercase tracking-wider text-muted-foreground transition hover:border-white/30 hover:text-foreground cursor-pointer"
+                  >
+                    Details
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* View All creations banner */}
+        <div className="mt-12 flex flex-col sm:flex-row items-center justify-between rounded-2xl border border-white/[0.08] bg-[#14151e] p-6 sm:p-8 gap-4">
+          <div className="space-y-1 text-center sm:text-left">
+            <h4 className="font-serif text-xl sm:text-2xl text-foreground">Explore the Complete Catalog</h4>
+            <p className="text-xs sm:text-sm text-muted-foreground">Discover all {PRODUCTS.length} bridal sets, solitary rings, Swat emeralds, and timepieces.</p>
+          </div>
           <Link
             href="/products"
-            className="inline-flex items-center gap-2 rounded-lg bg-primary px-7 py-3.5 font-mono text-xs uppercase tracking-wider text-primary-foreground font-semibold shadow-lg hover:opacity-90 transition active:scale-[0.98]"
+            className="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/5 px-6 py-3 font-mono text-xs uppercase tracking-wider text-foreground hover:bg-white/10 transition shrink-0"
           >
-            Explore Full Products Page ({PRODUCTS.length} Creations) →
+            Open Catalog ({PRODUCTS.length} items) →
           </Link>
         </div>
       </div>

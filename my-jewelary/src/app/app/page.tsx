@@ -15,7 +15,7 @@ import {
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 
 export const metadata = {
-  title: 'Client Dashboard — Abdul Rahman Fine Jewelry',
+  title: 'Client Dashboard — Valoire Haute Joaillerie',
   description: 'Private client dashboard, active jewelry reservations, and appointments.',
 }
 
@@ -67,11 +67,11 @@ export default function DashboardHome() {
               <ArrowLeft className="h-3 w-3" /> Back to Storefront
             </Link>
             <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-              Abdul Rahman Jewelry (Pakistan)
+              Valoire Haute Joaillerie (Pakistan)
             </span>
           </div>
           <h1 className="mt-3 font-serif text-3xl tracking-tight md:text-4xl">
-            Welcome, Abdul Rahman
+            Welcome, Valoire Patron
           </h1>
           <p className="mt-1 text-xs text-muted-foreground">
             Account: <strong>arehman2370@gmail.com</strong> · Manage fine jewelry reservations and salon appointments.

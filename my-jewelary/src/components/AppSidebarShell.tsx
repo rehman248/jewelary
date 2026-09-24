@@ -100,7 +100,7 @@ export function AppSidebarShell() {
                 AR
               </div>
               <div className="flex flex-col min-w-0">
-                <span className="font-serif text-sm font-semibold tracking-wider truncate">ABDUL RAHMAN</span>
+                <span className="font-serif text-sm font-semibold tracking-wider truncate">VALOIRE</span>
                 <span className="font-mono text-[9px] uppercase tracking-widest text-primary truncate">Private Salon</span>
               </div>
             </Link>
@@ -170,7 +170,7 @@ export function AppSidebarShell() {
                   </Avatar>
                 </button>
               </TooltipTrigger>
-              <TooltipContent side="right">Abdul Rahman · Client Account</TooltipContent>
+              <TooltipContent side="right">Valoire Member · Client Account</TooltipContent>
             </Tooltip>
           ) : (
             <div className="flex items-center gap-2.5 rounded-md bg-accent/40 px-3 py-2">
@@ -178,7 +178,7 @@ export function AppSidebarShell() {
                 <AvatarFallback className="text-xs bg-primary/20 text-primary font-serif font-semibold">AR</AvatarFallback>
               </Avatar>
               <div className="flex-1 min-w-0 text-left">
-                <p className="text-xs font-semibold leading-tight truncate">Abdul Rahman</p>
+                <p className="text-xs font-semibold leading-tight truncate">Valoire Member</p>
                 <p className="text-[10px] font-mono text-muted-foreground leading-tight truncate">
                   arehman2370@gmail.com
                 </p>

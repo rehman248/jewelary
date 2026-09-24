@@ -13,8 +13,8 @@ export const viewport: Viewport = {
 }
 
 export const metadata: Metadata = {
-  title: "Abdul Rahman Jewelry — Pakistan's Premier Fine Jeweler",
-  description: "Exclusive handcrafted 18K/22K gold and certified diamond jewelry in Pakistan. Created and designed by Abdul Rahman (arehman2370@gmail.com).",
+  title: "VALOIRE Haute Joaillerie — Fine Jewelry Atelier (Pakistan)",
+  description: "Exclusive handcrafted 18K/22K solid gold, certified natural diamonds, and fine silver creations by VALOIRE Atelier. Salons in Karachi and Lahore.",
   icons: {
     icon: "/favicon.svg",
   },

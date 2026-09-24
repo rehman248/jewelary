@@ -34,13 +34,13 @@ export default function PaymentPage() {
 
   // Card Form State
   const [cardNumber, setCardNumber] = useState('')
-  const [cardName, setCardName] = useState('Abdul Rahman')
+  const [cardName, setCardName] = useState('')
   const [expiry, setExpiry] = useState('')
   const [cvc, setCvc] = useState('')
 
   // Shipping details
   const [email, setEmail] = useState('arehman2370@gmail.com')
-  const [phone, setPhone] = useState('+92 300 1234567')
+  const [phone, setPhone] = useState('+92 307 2151932')
   const [address, setAddress] = useState('House 42, Khayaban-e-Shamsheer, DHA Phase 5')
   const [city, setCity] = useState('Karachi')
   const [province, setProvince] = useState('Sindh')
@@ -106,7 +106,7 @@ export default function PaymentPage() {
             <ArrowLeft className="h-4 w-4" /> Back to Atelier
           </Link>
           <div className="text-center">
-            <span className="font-serif text-xl tracking-[0.25em] font-medium">ABDUL RAHMAN</span>
+            <span className="font-serif text-xl tracking-[0.25em] font-medium">VALOIRE</span>
             <span className="block font-mono text-[8px] uppercase tracking-[0.3em] text-primary">Pakistan · Haute Joaillerie</span>
           </div>
           <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.15em] text-primary">
@@ -128,7 +128,7 @@ export default function PaymentPage() {
               </p>
               <h1 className="mt-3 font-serif text-4xl tracking-tight md:text-5xl">Shukriya / Thank You.</h1>
               <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">
-                Your order has been reserved with Abdul Rahman Jewelry Atelier. Our senior jeweler will contact you at <strong>{email}</strong> or <strong>{phone}</strong> to confirm your ring sizing and insured courier dispatch.
+                Your order has been reserved with Valoire Haute Joaillerie. Our senior concierge will contact you at <strong>{email}</strong> or <strong>{phone}</strong> to confirm your ring sizing and insured courier dispatch.
               </p>
 
               <div className="mt-8 rounded-lg border border-border/80 bg-card p-5 text-left text-xs space-y-3 font-mono">
@@ -178,7 +178,7 @@ export default function PaymentPage() {
             <form onSubmit={handleCompletePayment} className="space-y-10">
               <div>
                 <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-primary">
-                  Secure Checkout · Abdul Rahman Atelier (Pakistan)
+                  Secure Checkout · Valoire Haute Joaillerie (Pakistan)
                 </p>
                 <h1 className="mt-2 font-serif text-4xl tracking-[-0.03em] md:text-6xl">
                   Choose Payment Method.
@@ -241,7 +241,7 @@ export default function PaymentPage() {
                   <p className="font-semibold text-primary uppercase tracking-wider">Atelier Official Bank Details (Pakistan):</p>
                   <div className="space-y-1.5 text-muted-foreground">
                     <p><strong className="text-foreground">Bank:</strong> Meezan Bank Ltd. (Islamic Banking)</p>
-                    <p><strong className="text-foreground">Account Title:</strong> ABDUL RAHMAN JEWELRY ATELIER</p>
+                    <p><strong className="text-foreground">Account Title:</strong> VALOIRE HAUTE JOAILLERIE</p>
                     <p><strong className="text-foreground">IBAN / Raast ID:</strong> PK42MEZN0001928374650192</p>
                     <p><strong className="text-foreground">Email for Receipt:</strong> arehman2370@gmail.com</p>
                   </div>
@@ -267,7 +267,7 @@ export default function PaymentPage() {
                         required
                         value={cardName}
                         onChange={(e) => setCardName(e.target.value)}
-                        placeholder="Abdul Rahman"
+                        placeholder="e.g. Sarah Khan"
                         className="h-11 rounded border border-border bg-background px-3 text-sm text-foreground outline-none transition focus:border-primary"
                       />
                     </label>
@@ -484,7 +484,7 @@ export default function PaymentPage() {
             </div>
             <div className="flex items-start gap-3 text-xs text-muted-foreground">
               <Sparkles className="h-4 w-4 shrink-0 text-primary mt-0.5" />
-              <span><strong>Made by Abdul Rahman:</strong> Master craftsmanship with lifetime warranty.</span>
+              <span><strong>Valoire Hallmark:</strong> Master craftsmanship with lifetime authenticity guarantee.</span>
             </div>
           </div>
         </aside>

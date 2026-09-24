@@ -3,53 +3,10 @@
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { FormEvent, useState } from 'react'
+import { Lock, Mail, ArrowRight, Sparkles, ShieldCheck } from 'lucide-react'
 import { blink } from '@/blink/client'
-
-export function AuthLayout({ title, subtitle, children }: { title: string; subtitle: string; children: React.ReactNode }) {
-  return (
-    <main className="grid min-h-dvh bg-background text-foreground lg:grid-cols-2">
-      <div className="hidden bg-[linear-gradient(135deg,oklch(0.18_0.025_70),oklch(0.34_0.06_65))] p-10 lg:flex lg:flex-col lg:justify-between">
-        <Link href="/" className="font-serif text-2xl tracking-[0.25em]">ABDUL RAHMAN</Link>
-        <div>
-          <p className="max-w-md font-serif text-4xl leading-[1.1] tracking-[-0.03em]">
-            Handcrafted fine jewelry for men and women.
-          </p>
-          <p className="mt-4 text-sm text-foreground/70">
-            Designed & created by Abdul Rahman.
-          </p>
-        </div>
-        <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-foreground/60">Paris · Antwerp · Online Store</span>
-      </div>
-      <div className="flex items-center justify-center px-6 py-16">
-        <div className="w-full max-w-md">
-          <Link href="/" className="font-serif text-xl tracking-[0.25em] lg:hidden">ABDUL RAHMAN</Link>
-          <div className="mt-16 lg:mt-0">
-            <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-primary">Customer Account</p>
-            <h1 className="mt-4 font-serif text-4xl tracking-[-0.04em]">{title}</h1>
-            <p className="mt-2 text-sm text-muted-foreground">{subtitle}</p>
-            <div className="mt-8">{children}</div>
-          </div>
-        </div>
-      </div>
-    </main>
-  )
-}
-
-function Field({ label, type, value, onChange, autoComplete }: { label: string; type: string; value: string; onChange: (value: string) => void; autoComplete: string }) {
-  return (
-    <label className="grid gap-2 text-sm">
-      <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary">{label}</span>
-      <input
-        required
-        type={type}
-        value={value}
-        onChange={e => onChange(e.target.value)}
-        autoComplete={autoComplete}
-        className="h-12 border border-border bg-background px-4 text-foreground outline-none transition focus:border-primary"
-      />
-    </label>
-  )
-}
+import { Navbar } from '@/components/atelier/navbar'
+import { Footer } from '@/components/atelier/footer'
 
 export default function LoginPage() {
   const router = useRouter()
@@ -66,29 +23,110 @@ export default function LoginPage() {
       await blink.auth.signInWithEmail(email, password)
       router.push('/')
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'We could not sign you in. Please check your email and password.')
+      setError(err instanceof Error ? err.message : 'We could not sign you in. Please check your credentials.')
     } finally {
       setLoading(false)
     }
   }
 
   return (
-    <AuthLayout title="Welcome Back" subtitle="Sign in to view your orders and bookings.">
-      <form onSubmit={submit} className="grid gap-5">
-        <Field label="Email Address" type="email" value={email} onChange={setEmail} autoComplete="email" />
-        <Field label="Password" type="password" value={password} onChange={setPassword} autoComplete="current-password" />
-        {error && <p role="alert" className="text-sm text-destructive">{error}</p>}
-        <button
-          disabled={loading}
-          className="h-12 cursor-pointer bg-primary font-mono text-xs uppercase tracking-[0.2em] text-primary-foreground transition hover:opacity-90 disabled:opacity-60"
-        >
-          {loading ? 'Signing in…' : 'Sign In'}
-        </button>
-      </form>
-      <p className="mt-8 text-center text-sm text-muted-foreground">
-        New here? <Link href="/signup" className="text-primary underline underline-offset-4">Create an account</Link>
-      </p>
-    </AuthLayout>
+    <div className="min-h-dvh flex flex-col bg-[#08080a] text-foreground selection:bg-white selection:text-black">
+      {/* Top Navbar */}
+      <Navbar />
+
+      {/* Main Login View */}
+      <main className="flex-1 flex items-center justify-center px-4 py-16 sm:px-6 lg:px-8 bg-gradient-to-b from-[#0e0f17] to-[#08080a]">
+        <div className="w-full max-w-md space-y-8">
+          {/* Header */}
+          <div className="text-center space-y-2">
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-1.5 backdrop-blur-sm">
+              <Sparkles className="h-3 w-3 text-white" />
+              <span className="font-mono text-[9px] uppercase tracking-widest text-muted-foreground">
+                Client Portal
+              </span>
+            </div>
+            <h1 className="font-serif text-3xl sm:text-4xl text-white font-normal">
+              Sign In to Your Account
+            </h1>
+            <p className="text-xs sm:text-sm text-zinc-400">
+              Access your bespoke jewelry orders, appointments, and wishlists.
+            </p>
+          </div>
+
+          {/* Form Card */}
+          <div className="rounded-2xl border border-white/[0.08] bg-[#12131d] p-6 sm:p-8 shadow-2xl space-y-6">
+            <form onSubmit={submit} className="space-y-4">
+              <div>
+                <label className="block font-mono text-[10px] uppercase tracking-widest text-zinc-400 mb-1.5">
+                  Email Address
+                </label>
+                <div className="relative">
+                  <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-500" />
+                  <input
+                    required
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    autoComplete="email"
+                    placeholder="client@example.com"
+                    className="h-12 w-full rounded-xl border border-white/10 bg-[#181926] pl-10 pr-4 text-sm text-white placeholder:text-zinc-600 outline-none focus:border-white/30 transition-colors"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <label className="block font-mono text-[10px] uppercase tracking-widest text-zinc-400 mb-1.5">
+                  Password
+                </label>
+                <div className="relative">
+                  <Lock className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-zinc-500" />
+                  <input
+                    required
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    autoComplete="current-password"
+                    placeholder="••••••••"
+                    className="h-12 w-full rounded-xl border border-white/10 bg-[#181926] pl-10 pr-4 text-sm text-white placeholder:text-zinc-600 outline-none focus:border-white/30 transition-colors"
+                  />
+                </div>
+              </div>
+
+              {error && (
+                <div className="rounded-xl border border-rose-500/20 bg-rose-500/10 p-3 text-xs text-rose-300">
+                  {error}
+                </div>
+              )}
+
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full h-12 inline-flex cursor-pointer items-center justify-center gap-2 rounded-xl bg-white px-6 font-mono text-xs uppercase tracking-wider text-black font-semibold hover:bg-white/90 active:scale-[0.99] transition disabled:opacity-50 shadow-lg"
+              >
+                {loading ? 'Signing in…' : 'Sign In'} <ArrowRight className="h-4 w-4" />
+              </button>
+            </form>
+
+            <div className="pt-4 border-t border-white/[0.06] text-center space-y-2 font-mono text-xs">
+              <p className="text-zinc-400">
+                New customer?{' '}
+                <Link href="/signup" className="text-white hover:underline underline-offset-4 font-semibold">
+                  Create Account
+                </Link>
+              </p>
+            </div>
+          </div>
+
+          {/* Trust Shield */}
+          <div className="flex items-center justify-center gap-2 font-mono text-[10px] uppercase tracking-widest text-zinc-500">
+            <ShieldCheck className="h-3.5 w-3.5" />
+            <span>256-Bit Encrypted Client Security</span>
+          </div>
+        </div>
+      </main>
+
+      {/* Footer */}
+      <Footer />
+    </div>
   )
 }
-

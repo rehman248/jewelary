@@ -8,7 +8,7 @@ export default function DashboardLayout({
   children: React.ReactNode
 }) {
   return (
-    <SharedAppLayout appName="Abdul Rahman Jewelry">
+    <SharedAppLayout appName="Valoire Haute Joaillerie">
       {children}
     </SharedAppLayout>
   )
