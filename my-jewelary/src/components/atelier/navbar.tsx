@@ -12,6 +12,7 @@ import {
   CalendarCheck,
   Home as HomeIcon,
   User,
+  Award,
 } from 'lucide-react'
 
 interface NavbarProps {
@@ -23,7 +24,8 @@ const SECTIONS = [
   { name: 'Home', href: '/', icon: HomeIcon, tag: 'Overview' },
   { name: 'Products', href: '/products', icon: Gem, tag: 'Catalog' },
   { name: 'Creations', href: '/creations', icon: Sparkles, tag: 'Masterpieces' },
-  { name: 'Craft', href: '/craft', icon: Hammer, tag: 'Atelier' },
+  { name: 'About Atelier', href: '/about', icon: Award, tag: 'Maison' },
+  { name: 'Craft', href: '/craft', icon: Hammer, tag: 'Artisans' },
   { name: 'Standards', href: '/standards', icon: ShieldCheck, tag: 'Purity' },
   { name: 'Salons', href: '/salons', icon: Building2, tag: 'Locations' },
   { name: 'Book Visit', href: '/book', icon: CalendarCheck, tag: 'VIP' },
@@ -33,7 +35,7 @@ export function Navbar({ cartCount = 0, onOpenBag }: NavbarProps) {
   const pathname = usePathname()
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-[#08080a]/95 backdrop-blur-xl border-b border-white/[0.08] shadow-2xl transition-all">
+    <header className="sticky top-0 z-50 w-full bg-[#0d0e15]/90 backdrop-blur-xl border-b border-white/[0.08] shadow-2xl transition-all">
       {/* Top Brand & Actions Bar */}
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 md:px-8">
         {/* Brand Name */}

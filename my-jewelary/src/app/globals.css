@@ -8,34 +8,34 @@
    ═══════════════════════════════════════════════════════════════════════════ */
 
 :root {
-  --background: #08080a;
+  --background: #0d0e15;
   --foreground: #F8FAFC;
-  --card: #14151b;
+  --card: #151622;
   --card-foreground: #FFFFFF;
-  --popover: #181922;
+  --popover: #1a1b26;
   --popover-foreground: #FFFFFF;
   --primary: #F8FAFC;
-  --primary-foreground: #08080a;
+  --primary-foreground: #0d0e15;
   --gold: #D4AF37;
   --gold-muted: rgba(212, 175, 55, 0.15);
-  --secondary: #191a24;
+  --secondary: #1d1e2b;
   --secondary-foreground: #E2E8F0;
-  --muted: #161720;
+  --muted: #181926;
   --muted-foreground: #94A3B8;
   --accent: #E2E8F0;
-  --accent-foreground: #08080a;
+  --accent-foreground: #0d0e15;
   --destructive: #EF4444;
   --destructive-foreground: #FFFFFF;
-  --border: #23242e;
+  --border: #272838;
   --border-subtle: rgba(255, 255, 255, 0.08);
-  --input: #23242e;
+  --input: #272838;
   --ring: #F8FAFC;
 
   /* Black Shades for Section Alternation */
-  --bg-shade-base: #08080a;
-  --bg-shade-alt: #0e0f14;
-  --bg-shade-surface: #14151c;
-  --bg-shade-elevated: #1a1b24;
+  --bg-shade-base: #0d0e15;
+  --bg-shade-alt: #12131d;
+  --bg-shade-surface: #181926;
+  --bg-shade-elevated: #202130;
 
   --chart-1: #FFFFFF;
   --chart-2: #E2E8F0;

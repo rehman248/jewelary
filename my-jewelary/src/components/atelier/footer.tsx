@@ -4,6 +4,7 @@ import { Phone, Mail, MessageCircle } from 'lucide-react'
 const LINKS = [
   { href: '/products', label: 'Jewelry Products' },
   { href: '/creations', label: 'Master Creations' },
+  { href: '/about', label: 'About The Maison' },
   { href: '/craft', label: 'The Atelier & Craft' },
   { href: '/standards', label: 'Purity & Standards' },
   { href: '/salons', label: 'Flagship Salons' },
@@ -12,7 +13,7 @@ const LINKS = [
 
 export function Footer() {
   return (
-    <footer className="border-t border-white/[0.06] bg-[#060608] px-4 py-12 sm:px-6 md:px-10">
+    <footer className="border-t border-white/[0.08] bg-[#0a0b10] px-4 py-12 sm:px-6 md:px-10">
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-8 md:grid-cols-12 md:items-start">
           {/* Brand Info */}
