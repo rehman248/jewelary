@@ -97,11 +97,11 @@ function MainHero() {
       {/* Universal Top Section Navigation */}
       <Navbar cartCount={cart.length} onOpenBag={() => setCheckoutOpen(true)} />
 
-      {/* Hero Section with Lightened, High-Clarity Video Background */}
-      <section className="relative min-h-[85vh] md:min-h-[88vh] flex flex-col justify-between overflow-hidden bg-[#10111a]">
-        {/* Background Video (Lightened & Luminous) */}
+      {/* Hero Section with 100% Visible Video & Floating Text */}
+      <section className="relative min-h-[85vh] md:min-h-[90vh] flex flex-col justify-between overflow-hidden bg-black">
+        {/* Background Video (100% Full Visibility) */}
         <video
-          className="absolute inset-0 h-full w-full object-cover opacity-85 brightness-105 contrast-105"
+          className="absolute inset-0 h-full w-full object-cover opacity-100"
           src="/media/atelier-diamond.mp4"
           poster="/media/atelier-diamond-poster.jpg"
           autoPlay
@@ -112,29 +112,25 @@ function MainHero() {
           aria-label="A diamond transformed by the cutting house"
         />
         
-        {/* Subtle, Soft Luminous Vignette Overlays so Video is Clearly Visible */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/25 to-black/50 pointer-events-none" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0e0f16] via-transparent to-black/30 pointer-events-none" />
+        {/* Minimal soft bottom fade to transition to the next section */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0e0f16] via-transparent to-black/20 pointer-events-none" />
 
-        {/* Ambient Gold Halo */}
-        <div className="absolute top-1/4 left-1/4 h-80 w-80 rounded-full bg-amber-400/10 blur-[100px] pointer-events-none" />
-
-        {/* Hero Content Center */}
+        {/* Hero Content Floating Directly Over Video (No Box / Invisible Container) */}
         <div className="relative z-20 mx-auto w-full max-w-7xl px-4 py-16 sm:px-8 md:px-12 my-auto">
-          <div className="max-w-2xl space-y-4 sm:space-y-6 rounded-3xl bg-black/35 backdrop-blur-md p-6 sm:p-8 border border-white/10 shadow-2xl">
-            <div className="inline-flex items-center gap-2 rounded-full border border-amber-400/30 bg-amber-400/10 px-3.5 py-1.5 backdrop-blur-md">
-              <Sparkles className="h-3 w-3 text-amber-300" />
-              <p className="font-mono text-[9px] sm:text-[10px] uppercase tracking-widest text-amber-200 font-medium">
+          <div className="max-w-2xl space-y-4 sm:space-y-6">
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-black/40 px-3.5 py-1.5 backdrop-blur-md shadow-lg">
+              <Sparkles className="h-3.5 w-3.5 text-amber-300" />
+              <p className="font-mono text-[9px] sm:text-[10px] uppercase tracking-widest text-white font-medium drop-shadow">
                 Valoire Haute Joaillerie Atelier
               </p>
             </div>
 
-            <h1 className="font-serif text-3xl sm:text-6xl md:text-7xl leading-[1.08] tracking-tight text-white font-normal drop-shadow-md">
+            <h1 className="font-serif text-3xl sm:text-6xl md:text-7xl leading-[1.08] tracking-tight text-white font-normal drop-shadow-[0_4px_20px_rgba(0,0,0,0.9)]">
               Measured Purity.<br />
-              <span className="italic font-light text-amber-100/90">Timeless Elegance.</span>
+              <span className="italic font-light text-amber-200 drop-shadow-[0_4px_20px_rgba(0,0,0,0.9)]">Timeless Elegance.</span>
             </h1>
 
-            <p className="max-w-xl text-xs sm:text-base leading-relaxed text-zinc-200">
+            <p className="max-w-xl text-sm sm:text-base md:text-lg leading-relaxed text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)] font-normal">
               Handcrafted 18K/22K solid gold, certified natural diamonds, and pure silver creations by <strong>VALOIRE Atelier</strong>. Tailored for distinction in Karachi, Lahore, and worldwide.
             </p>
 
@@ -142,13 +138,13 @@ function MainHero() {
             <div className="pt-2 flex flex-wrap items-center gap-3 sm:gap-4">
               <Link
                 href="/products"
-                className="inline-flex items-center gap-2 rounded-xl bg-white px-6 sm:px-7 py-3.5 sm:py-4 font-mono text-xs uppercase tracking-wider text-black font-semibold hover:bg-zinc-200 transition active:scale-[0.98] shadow-2xl cursor-pointer"
+                className="inline-flex items-center gap-2 rounded-xl bg-white px-6 sm:px-7 py-3.5 sm:py-4 font-mono text-xs uppercase tracking-wider text-black font-semibold hover:bg-amber-300 transition active:scale-[0.98] shadow-2xl cursor-pointer"
               >
                 Explore Products ({PRODUCTS.length}) <ArrowUpRight className="h-4 w-4" />
               </Link>
               <Link
                 href="/about"
-                className="inline-flex items-center gap-2 rounded-xl border border-white/25 bg-white/10 px-5 sm:px-6 py-3.5 sm:py-4 font-mono text-xs uppercase tracking-wider text-white hover:bg-white/20 transition cursor-pointer backdrop-blur-md"
+                className="inline-flex items-center gap-2 rounded-xl border border-white/40 bg-black/50 px-5 sm:px-6 py-3.5 sm:py-4 font-mono text-xs uppercase tracking-wider text-white hover:bg-black/70 hover:border-white/60 transition cursor-pointer backdrop-blur-md shadow-xl"
               >
                 About The Maison <ArrowRight className="h-3.5 w-3.5" />
               </Link>
@@ -156,36 +152,36 @@ function MainHero() {
           </div>
         </div>
 
-        {/* Hero 3 Trust Badges Bar */}
-        <div className="relative z-20 border-t border-white/[0.08] bg-[#0e0f16]/90 backdrop-blur-md px-4 py-5 sm:px-8 md:px-12">
+        {/* Hero 3 Trust Badges Bar (Translucent Glassmorphism) */}
+        <div className="relative z-20 border-t border-white/15 bg-black/50 backdrop-blur-md px-4 py-5 sm:px-8 md:px-12">
           <div className="mx-auto max-w-7xl grid grid-cols-1 gap-4 sm:grid-cols-3">
             <div className="flex items-center gap-3">
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-amber-400/10 border border-amber-400/20 text-amber-300">
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-amber-400/20 border border-amber-400/30 text-amber-300">
                 <Sparkles className="h-4 w-4" />
               </div>
               <div>
-                <h4 className="font-serif text-xs sm:text-sm font-medium text-white">Karachi & Lahore Salons</h4>
-                <p className="text-[11px] text-zinc-400">Handcrafted jewelry heritage</p>
+                <h4 className="font-serif text-xs sm:text-sm font-medium text-white drop-shadow">Karachi & Lahore Salons</h4>
+                <p className="text-[11px] text-zinc-300 drop-shadow">Handcrafted jewelry heritage</p>
               </div>
             </div>
 
             <div className="flex items-center gap-3">
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-amber-400/10 border border-amber-400/20 text-amber-300">
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-amber-400/20 border border-amber-400/30 text-amber-300">
                 <Gem className="h-4 w-4" />
               </div>
               <div>
-                <h4 className="font-serif text-xs sm:text-sm font-medium text-white">GIA & IGI Certified</h4>
-                <p className="text-[11px] text-zinc-400">Independently graded natural gems</p>
+                <h4 className="font-serif text-xs sm:text-sm font-medium text-white drop-shadow">GIA & IGI Certified</h4>
+                <p className="text-[11px] text-zinc-300 drop-shadow">Independently graded natural gems</p>
               </div>
             </div>
 
             <div className="flex items-center gap-3">
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-amber-400/10 border border-amber-400/20 text-amber-300">
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-amber-400/20 border border-amber-400/30 text-amber-300">
                 <ShieldCheck className="h-4 w-4" />
               </div>
               <div>
-                <h4 className="font-serif text-xs sm:text-sm font-medium text-white">18K / 22K Solid Gold</h4>
-                <p className="text-[11px] text-zinc-400">Official hallmark purity guarantee</p>
+                <h4 className="font-serif text-xs sm:text-sm font-medium text-white drop-shadow">18K / 22K Solid Gold</h4>
+                <p className="text-[11px] text-zinc-300 drop-shadow">Official hallmark purity guarantee</p>
               </div>
             </div>
           </div>
